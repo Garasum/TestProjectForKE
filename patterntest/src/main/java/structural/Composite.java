@@ -1,7 +1,7 @@
-package Structural;
+package structural;
 
 /**
  * Created by Orest on 2/24/2017.
  */
-public class Builder {
+public class Composite {
 }

@@ -76,6 +76,7 @@ public class AbstractFactory {
 
     public static void main(String[] args) {
         AbstractFactory abstractFactory = new AbstractFactory();
+
         IToyFactory toyFactory = abstractFactory.new WoodenToysFactory();
         Bear bear = toyFactory.GetBear();
         Cat cat = toyFactory.GetCat();

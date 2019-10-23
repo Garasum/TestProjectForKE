@@ -57,7 +57,7 @@ public class Adapter {
     /**
      * Step 3 : Create adapter class implementing the MediaPlayer interface.
      */
-    public class MediaAdapter implements MediaPlayer {
+        public class MediaAdapter implements MediaPlayer {
 
         AdvancedMediaPlayer advancedMediaPlayer;
 

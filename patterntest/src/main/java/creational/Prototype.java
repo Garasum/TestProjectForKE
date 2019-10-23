@@ -126,6 +126,7 @@ public class Prototype {
      */
     public static void main(String[] args) {
         Prototype prototype = new Prototype();
+
         ShapeCache shapeCache = prototype.new ShapeCache();
         shapeCache.loadCache();
 

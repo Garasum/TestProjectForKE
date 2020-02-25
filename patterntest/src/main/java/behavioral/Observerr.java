@@ -37,49 +37,49 @@ public class Observerr {
     }
 
     //Create Observer class
-       public abstract class Observer {
+    public abstract class Observer {
         protected Subject subject;
 
         public abstract void update();
     }
 
     //Create concrete observer classes
-    public class BinaryObserver extends Observer{
+    public class BinaryObserver extends Observer {
 
-        public BinaryObserver(Subject subject){
+        public BinaryObserver(Subject subject) {
             this.subject = subject;
             this.subject.attach(this);
         }
 
         @Override
         public void update() {
-            System.out.println( "Binary String: " + Integer.toBinaryString( subject.getState() ) );
+            System.out.println("Binary String: " + Integer.toBinaryString(subject.getState()));
         }
     }
 
-    public class OctalObserver extends Observer{
+    public class OctalObserver extends Observer {
 
-        public OctalObserver(Subject subject){
+        public OctalObserver(Subject subject) {
             this.subject = subject;
             this.subject.attach(this);
         }
 
         @Override
         public void update() {
-            System.out.println( "Octal String: " + Integer.toOctalString( subject.getState() ) );
+            System.out.println("Octal String: " + Integer.toOctalString(subject.getState()));
         }
     }
 
-    public class HexaObserver extends Observer{
+    public class HexaObserver extends Observer {
 
-        public HexaObserver(Subject subject){
+        public HexaObserver(Subject subject) {
             this.subject = subject;
             this.subject.attach(this);
         }
 
         @Override
         public void update() {
-            System.out.println( "Hex String: " + Integer.toHexString( subject.getState() ).toUpperCase() );
+            System.out.println("Hex String: " + Integer.toHexString(subject.getState()).toUpperCase());
         }
     }
 

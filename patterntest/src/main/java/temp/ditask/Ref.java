@@ -54,6 +54,9 @@ public class Ref {
                     //if (field.isAnnotationPresent(Auto.class))
                     // return object
 
+
+                    // TODO : scan DITest for annotation, if present - create object - return/override field
+
                 } catch (Throwable ex) {
                     System.out.println(ex);
                 }

@@ -1,66 +1,79 @@
 package temp.ditask;
 
+
+import org.testng.internal.reflect.ReflectionHelper;
+
 import java.lang.annotation.Annotation;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
+import java.util.Arrays;
 
 public class Ref {
-    // reflection ?
-    // get annotation
-    // create object
-    // static method init ??
-    // HOW TO GET CREATED OBJECT ???
-
-    //https://www.geeksforgeeks.org/method-class-getannotation-method-in-java/
-    //https://www.programmingmitra.com/2016/05/creating-objects-through-reflection-in-java-with-example.html
-    //https://dzone.com/articles/creating-custom-annotations-in-java
-    //https://mkyong.com/java/java-custom-annotations-example/
-    //https://javarush.ru/groups/posts/513-reflection-api-refleksija-temnaja-storona-java
-
-    //https://stackoverflow.com/questions/2408789/getting-class-type-from-string
-    //https://www.programmingmitra.com/2016/05/creating-objects-through-reflection-in-java-with-example.html
-
-    //public static void main(String[] args) {
 
     public static void init() {
-        //https://marcin-chwedczuk.github.io/creating-and-using-adnotations-in-java
+        //Find classes that use annotation - Scan Package
+        //Find classes that implement Interface IApple - Scan Package
         Class<DITest> obj = DITest.class;
-        //IApple apple;
 
-        //TODO : get annotation
-        // if method is annotated with @Auto
         for (Field field : obj.getDeclaredFields())
             if (field.isAnnotationPresent(Auto.class)) {
 
                 Annotation annotation = field.getAnnotation(Auto.class);
                 Auto auto = (Auto) annotation;
 
-                System.out.println("Annotation name value : " + auto.name());
+                System.out.println("Annotation name value : " + auto);
+                System.out.println("Annotation class value : " + auto.getClass());
 
-                // TODO: if auto.name implements IApple -> Create new object ( invoke(obj.newInstance() )
                 try {
-                    //method.invoke(obj.newInstance());
-                    String className = "temp.ditask." + auto.name();
+                    // use
+                    String className = "temp.ditask.Apple";
                     System.out.println(className);
                     Class<?> cls = Class.forName(className);
-                    //cls.newInstance();
                     IApple apple = (IApple) cls.newInstance();
-                    //apple = (IApple) cls.newInstance();
 
                     apple.hello();
-                    //Invoking Methods by Name
-                    //https://www.oracle.com/technical-resources/articles/java/javareflection.html
-
-                    //if (field.isAnnotationPresent(Auto.class))
-                    // return object
-
-
-                    // TODO : scan DITest for annotation, if present - create object - return/override field
 
                 } catch (Throwable ex) {
                     System.out.println(ex);
                 }
-                // TODO: how to throw object up ??
             }
+    }
+
+    public static void findInterfaceImplementation(Class<?> interfaceClass, Package fromPackage) {
+        if (interfaceClass == null) {
+            System.out.println("unknown subclass");
+        }
+        if (fromPackage == null) {
+            System.out.println("unknown package");
+        }
+
+
+    }
+
+    public void packageLevelAnnotation() throws ClassNotFoundException {
+        //Find classes that implement Interface IApple - Scan Package
+        //get package
+        Package pack = IApple.class.getPackage();
+        System.out.println(pack);
+
+        //https://stackoverflow.com/questions/520328/can-you-find-all-classes-in-a-package-using-reflection
+        //http://oohhyeah.blogspot.com/2012/01/use-java-reflection-to-find-classes.html
+        
+        //scan package for classes
+            // chack in class - Class<?> cls = searchClass.getInterfaces();
+            // if cls implements IApple - return it
+
+    }
+
+
+    public static void main(String[] args) throws ClassNotFoundException {
+        //init();
+        String className = "temp.ditask.Apple";
+        Class<?> cls = Class.forName(className);
+
+        Ref ref = new Ref();
+        ref.packageLevelAnnotation();
+
+        findInterfaceImplementation(cls, cls.getPackage());
     }
 }

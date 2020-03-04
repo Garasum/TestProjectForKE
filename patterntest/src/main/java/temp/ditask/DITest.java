@@ -4,7 +4,7 @@ import static temp.ditask.Reff.init;
 
 public class DITest {
 
-    @Auto(name = "Apple")
+    @Auto
     static IApple apple;
 
     public static void main(String[] args) throws IllegalAccessException, InstantiationException, ClassNotFoundException {

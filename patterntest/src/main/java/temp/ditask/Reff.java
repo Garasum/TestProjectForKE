@@ -6,7 +6,7 @@ import java.lang.reflect.Field;
 import java.util.Set;
 
 public class Reff {
-    public static String getInterfaceImplementation() throws ClassNotFoundException {
+    public static String getInterfaceImplementation() {
         //Find classes that implement Interface IApple - Scan Package
         //Get package
         Package pack = IApple.class.getPackage();
